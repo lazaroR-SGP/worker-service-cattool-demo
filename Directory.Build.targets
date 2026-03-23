@@ -1,0 +1,45 @@
+<Project>
+<!--  <Target Name="ForcePublishDir" BeforeTargets="Publish">
+    <!{1}** Esto asegura que, si $(SolutionDir) no está definido, se asigna automáticamente a la carpeta raíz de la solución. **{1}>
+	<PropertyGroup Condition="'$(SolutionDir)' == ''">
+       <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+    </PropertyGroup>
+    <!{1}** Folder Deploy: Visual Studio usa PublishUrl, no PublishDir **{1}>
+    <PropertyGroup Condition="'$(DeployTarget)' == ''">
+      <PublishUrl>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishUrl>
+      <PublishDir>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishDir>
+    </PropertyGroup>
+
+    <!{1}** Para IIS Web Deploy **{1}>
+ <!{1}**   <PropertyGroup Condition="'$(DeployTarget)' == 'IIS'">
+      <PublishUrl>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishUrl>
+      <PublishDir>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishDir>
+    </PropertyGroup>**{1}>
+
+    <!{1}** Para Azure Web Deploy **{1}>
+ <!{1}**   <PropertyGroup Condition="'$(DeployTarget)' == 'Azure'">
+      <PublishUrl>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishUrl>
+      <PublishDir>$(SolutionDir)\artifacts\publish\$(MSBuildProjectName)\</PublishDir>
+    </PropertyGroup>**{1}>
+  </Target>-->
+
+<!--
+    ============================================================
+                                        SetCustomPublishDir
+
+    Prepara la ruta de publicacion.
+    ============================================================
+    -->
+
+<Target Name="SetCustomPublishDir" BeforeTargets="PrepareForPublish">
+    <!-- Normalizamos la ruta para evitar espacios en blanco o dobles barras -->
+    <PropertyGroup>
+      <!-- Usamos MSBuildProjectName para generar una subcarpeta única por proyecto -->
+	  <PublishUrl>$([System.IO.Path]::Combine('$(ArtifactsDir)', '$(MSBuildProjectName)'))\</PublishUrl>
+      <PublishDir>$([System.IO.Path]::Combine('$(ArtifactsDir)', '$(MSBuildProjectName)'))\</PublishDir>
+    </PropertyGroup>
+
+    <!-- Diagnóstico opcional: mostrará la ruta calculada durante la compilación -->
+    <Message Importance="high" Text="*** Publicando en: $(PublishDir) ***" />
+  </Target>
+</Project>

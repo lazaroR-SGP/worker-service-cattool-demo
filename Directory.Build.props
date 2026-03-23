@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+	<!-- Targeting -->
+	<TargetFramework>net10.0</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+
+	<!-- Code quality -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>	
+	
+	<!-- Assembly metadata -->
+    <Company>SYMCO GROUP PANAMA</Company>
+    <Authors>SYMCO GROUP PANAMA</Authors>
+    <RepositoryType>git</RepositoryType>	
+	
+    <!-- Ubicaciones de compilación intermedia y final -->
+	<SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
+	
+	<!-- Output layout -->
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>	
+	<BaseIntermediateOutputPath>$(SolutionDir)artifacts\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)artifacts\bin\$(MSBuildProjectName)\</BaseOutputPath>
+	
+	<!-- Personalización de la publicación -->
+	<!-- Definir carpeta base de publicación sin espacios extra -->
+    <ArtifactsDir>$(MSBuildThisFileDirectory)artifacts\publish\</ArtifactsDir>	
+  </PropertyGroup>
+</Project>
