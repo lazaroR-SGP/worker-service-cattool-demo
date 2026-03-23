@@ -1,0 +1,31 @@
+﻿# EditorConfig ayuda a mantener estilos y reglas consistentes
+# Coloca este archivo en la raíz del repositorio
+
+root = true
+
+[*.{cs,js,ts,java,py}]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+# -------------------------------
+# 🔎 ReSharper / Rider Inspections
+# -------------------------------
+
+# Obligar a que los TODOs sigan el formato:
+# // TODO[ABC, 2025-09-12]: descripción (motivo) [referencia]
+resharper_comment_patterns = \(TODO|FIXME|OPTIMIZE|HACK)\[[A-Z]{2,5},\s\d{4}-\d{2}-\d{2}\]:.*
+
+# Personalización de severidad:
+# "warning" = se muestra en amarillo
+# "error"   = se muestra en rojo (bloquea build si se usa en CI con inspectcode)
+resharper_todo_comment_highlighting = warning
+
+# -------------------------------
+# Ejemplo de TODO válido:
+# -------------------------------
+# // TODO[LP, 2025-09-12]: Validar inputs antes de enviarlos al backend [JIRA-342]
+# // OPTIMIZE[MR, 2025-09-10]: Usar batch queries en lugar de múltiples SELECT
