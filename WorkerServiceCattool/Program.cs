@@ -18,7 +18,7 @@ try
     builder.AddLogging();
 
     //builder.AddPersistence();
-    //builder.AddHangfirePipeline();
+    builder.AddHangfirePipeline();
     //builder.AddBatchPipeline();
     //builder.AddScheduler();
     //builder.AddObservability();
